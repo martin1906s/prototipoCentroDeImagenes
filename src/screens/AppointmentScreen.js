@@ -230,9 +230,13 @@ const AppointmentScreen = () => {
       >
         <View style={styles.header}>
           <Text style={styles.title}>Mis Citas</Text>
+          <Text style={{color: 'red', fontSize: 12}}>Modal: {showNewAppointmentModal ? 'ABIERTO' : 'CERRADO'}</Text>
           <TouchableOpacity 
             style={styles.newAppointmentButton}
-            onPress={() => setShowNewAppointmentModal(true)}
+            onPress={() => {
+              console.log('Botón presionado, abriendo modal...');
+              setShowNewAppointmentModal(true);
+            }}
           >
             <LinearGradient
               colors={COLORS.gradientSecondary}
@@ -260,8 +264,10 @@ const AppointmentScreen = () => {
         visible={showNewAppointmentModal}
         animationType="slide"
         presentationStyle="pageSheet"
+        onRequestClose={() => setShowNewAppointmentModal(false)}
       >
         <View style={styles.modalContainer}>
+          {console.log('Modal renderizando, visible:', showNewAppointmentModal)}
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Agendar Nueva Cita</Text>
             <TouchableOpacity onPress={() => setShowNewAppointmentModal(false)}>
@@ -530,7 +536,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: COLORS.gray[50],
+    backgroundColor: COLORS.white,
   },
   modalHeader: {
     flexDirection: 'row',

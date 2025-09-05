@@ -169,6 +169,7 @@ const ResultsScreen = () => {
   };
 
   const handleViewImage = (image) => {
+    console.log('Abriendo modal de imagen para:', image.name);
     setSelectedResult(image);
     setShowImageViewer(true);
   };
@@ -285,6 +286,7 @@ const ResultsScreen = () => {
         animationType="fade"
         transparent={true}
         onRequestClose={() => setShowImageViewer(false)}
+        statusBarTranslucent={true}
       >
         <View style={styles.imageModalContainer}>
           <View style={styles.imageModalHeader}>

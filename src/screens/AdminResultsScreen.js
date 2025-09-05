@@ -113,6 +113,7 @@ const AdminResultsScreen = () => {
   };
 
   const handleUploadResults = (result) => {
+    console.log('Abriendo modal de carga de resultados para:', result.userName);
     setSelectedResult(result);
     setUploadData({
       diagnosis: '',
@@ -321,6 +322,7 @@ const AdminResultsScreen = () => {
         visible={showUploadModal}
         animationType="slide"
         presentationStyle="pageSheet"
+        onRequestClose={() => setShowUploadModal(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalHeader}>
